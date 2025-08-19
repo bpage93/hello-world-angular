@@ -11,7 +11,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ItemDetailComponent } from './item-detail-component/item-detail-component';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -23,7 +22,7 @@ import { CommonModule } from '@angular/common';
     MatDividerModule,
     MatCheckboxModule,
     ItemDetailComponent,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './app.html',
 })
@@ -40,6 +39,14 @@ export class AppComponent {
 
   addItem(newItem: string) {
     this.items.push(newItem);
+  }
+
+  deleteItems() {
+    this.items = [];
+  }
+
+  removeItem(index: number) {
+    this.items.splice(index, 1);
   }
 
   disabled: Signal<boolean> = signal(false);
