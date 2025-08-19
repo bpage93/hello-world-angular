@@ -1,0 +1,44 @@
+<!-- app.html -->
+<h2>Two-way binding with the About button</h2>
+
+<!-- Input bound to the routeName variable -->
+<label>
+  Route:
+  <input [(ngModel)]="routeName" placeholder="Type a route, e.g., about" />
+  <input [(ngModel)]="routeNewName" placeholder="new name route" />
+</label>
+
+<!-- Button uses the bound value -->
+<button mat-raised-button color="accent" (click)="goToRoute()">
+  Go to {{ routeName || '...' }}
+</button>
+<button mat-raised-button color="accent" (click)="goNewName()">
+  Go to {{ routeNewName || '...' }}
+</button>
+
+<section class="example-section">
+  <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+</section>
+
+<ul>
+  @for (hero of myHeroes; track hero) {
+  <li>{{ hero }}</li>
+  } @empty {
+  <li>No heroes found.</li>
+  }
+</ul>
+
+@if (!disabled()) {
+<p>this is not checked</p>
+} @else {
+<p>this is checked</p>
+}
+
+<app-item-detail (itemAddEvent)="$event"></app-item-detail>
+<ul>
+  @for (item of items; track $index) {
+  <li>{{ item }}</li>
+  } @empty {
+  <li>No items found.</li>
+  }
+</ul>

@@ -1,0 +1,25 @@
+/* src/custom-theme.scss */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$cyan-palette,
+      tertiary: mat.$orange-palette,
+    ),
+    typography: (
+      plain-family: 'Roboto, Arial, sans-serif',
+      brand-family: 'Roboto, Arial, sans-serif',
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  @include mat.all-component-themes($my-theme);
+}
