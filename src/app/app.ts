@@ -8,8 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ItemDetailComponent } from './item-detail-component/item-detail-component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
+import { MatToolbar } from '@angular/material/toolbar';
+import { RouterOutlet, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -21,37 +24,29 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatDividerModule,
     MatCheckboxModule,
-    ItemDetailComponent,
+    MatToolbar,
     CommonModule,
-  ],
+    MatToolbarModule,
+    RouterOutlet,
+    RouterModule
+],
   templateUrl: './app.html',
+  styleUrl: './app.css',
 })
 export class AppComponent {
   private router = inject(Router);
 
   routeNewName = 'New Name';
 
+  myHeroes = ['Wonderful Woman', 'Batty Boy', 'Captain Cats'];
+
   // Bound to the input
   routeName = 'about';
 
   currentItem = 'Television';
-  items = ['apple ', 'banana', 'orange'];
-
-  addItem(newItem: string) {
-    this.items.push(newItem);
-  }
-
-  deleteItems() {
-    this.items = [];
-  }
-
-  removeItem(index: number) {
-    this.items.splice(index, 1);
-  }
+  
 
   disabled: Signal<boolean> = signal(false);
-
-  myHeroes = ['Wonderful Woman', 'Batty Boy', 'Captain Cats'];
 
   // Navigates to whatever is typed in routeName
   goToRoute() {

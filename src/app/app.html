@@ -1,3 +1,21 @@
+<mat-toolbar class="flex">
+  <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="flex grow"></span>
+  <button
+    matIconButton
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
 <!-- app.html -->
 <h2>Two-way binding with the About button</h2>
 
@@ -34,10 +52,6 @@
 <p>this is checked</p>
 }
 
-<app-item-detail (itemAddEvent)="addItem($event)"></app-item-detail>
-<ul>
-  @for (item of items; track $index) {
-  <li>{{ item }} <button (click)="removeItem($index)">X</button></li>
-  }
-</ul>
-<button type="button" (click)="deleteItems()">Delete All</button>
+<router-outlet></router-outlet>
+
+
