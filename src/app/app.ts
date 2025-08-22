@@ -1,5 +1,5 @@
 // app.ts
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Signal } from '@angular/core';
@@ -12,7 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterOutlet, RouterModule } from '@angular/router';
-
+import { Form } from '../app/form/form';
 
 @Component({
   selector: 'app-root',
@@ -28,8 +28,10 @@ import { RouterOutlet, RouterModule } from '@angular/router';
     CommonModule,
     MatToolbarModule,
     RouterOutlet,
-    RouterModule
-],
+    RouterModule,
+    Form
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -44,7 +46,6 @@ export class AppComponent {
   routeName = 'about';
 
   currentItem = 'Television';
-  
 
   disabled: Signal<boolean> = signal(false);
 
